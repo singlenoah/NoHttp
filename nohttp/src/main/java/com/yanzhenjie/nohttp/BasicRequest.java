@@ -51,7 +51,7 @@ import javax.net.ssl.SSLSocketFactory;
  * @author Yan Zhenjie.
  */
 public class BasicRequest<T extends BasicRequest>
-  implements Startable, Cancelable, Finishable {
+        implements Startable, Cancelable, Finishable {
 
     private final String boundary = createBoundary();
     private final String startBoundary = "--" + boundary;
@@ -147,7 +147,7 @@ public class BasicRequest<T extends BasicRequest>
     /**
      * Create a handle.
      *
-     * @param url handle adress, like: http://www.nohttp.net.
+     * @param url           handle adress, like: http://www.nohttp.net.
      * @param requestMethod handle method, like {@link RequestMethod#GET}, {@link RequestMethod#POST}.
      */
     public BasicRequest(String url, RequestMethod requestMethod) {
@@ -316,7 +316,7 @@ public class BasicRequest<T extends BasicRequest>
                 url += value;
             }
         }
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -326,7 +326,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setConnectTimeout(int connectTimeout) {
         mConnectTimeout = connectTimeout;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -343,7 +343,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setReadTimeout(int readTimeout) {
         mReadTimeout = readTimeout;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -357,12 +357,11 @@ public class BasicRequest<T extends BasicRequest>
      * Set the {@link SSLSocketFactory} for this handle.
      *
      * @param socketFactory {@link SSLSocketFactory}, {@link SSLUtils}.
-     *
      * @see SSLUtils
      */
     public T setSSLSocketFactory(SSLSocketFactory socketFactory) {
         mSSLSocketFactory = socketFactory;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -381,7 +380,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setHostnameVerifier(HostnameVerifier hostnameVerifier) {
         mHostnameVerifier = hostnameVerifier;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -403,7 +402,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setProxy(Proxy proxy) {
         this.mProxy = proxy;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -420,7 +419,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setRedirectHandler(RedirectHandler redirectHandler) {
         mRedirectHandler = redirectHandler;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -438,7 +437,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setRetryCount(int count) {
         this.mRetryCount = count;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -453,23 +452,23 @@ public class BasicRequest<T extends BasicRequest>
     /**
      * Add a new key-value header.
      *
-     * @param key key.
+     * @param key   key.
      * @param value value.
      */
     public T addHeader(String key, String value) {
         mHeaders.add(key, value);
-        return (T)this;
+        return (T) this;
     }
 
     /**
      * If there is a key to delete, and then add a new key-value header.
      *
-     * @param key key.
+     * @param key   key.
      * @param value value.
      */
     public T setHeader(String key, String value) {
         mHeaders.set(key, value);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -485,7 +484,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T addHeader(HttpCookie cookie) {
         if (cookie != null) mHeaders.add(Headers.HEAD_KEY_COOKIE, cookie.getName() + "=" + cookie.getValue());
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -495,7 +494,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T removeHeader(String key) {
         mHeaders.remove(key);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -503,7 +502,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T removeAllHeader() {
         mHeaders.clear();
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -529,7 +528,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setAccept(String accept) {
         mHeaders.set(Headers.HEAD_KEY_ACCEPT, accept);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -539,7 +538,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setAcceptLanguage(String acceptLanguage) {
         mHeaders.set(Headers.HEAD_KEY_ACCEPT_LANGUAGE, acceptLanguage);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -564,7 +563,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setContentType(String contentType) {
         mHeaders.set(Headers.HEAD_KEY_CONTENT_TYPE, contentType);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -584,11 +583,11 @@ public class BasicRequest<T extends BasicRequest>
      * Set the UA for client.
      *
      * @param userAgent such as: {@code Mozilla/5.0 (Android U; Android 5.0) AppleWebKit/533.1 (KHTML, like
-     *   Gecko) Version/5.0 Safari/533.1}.
+     *                  Gecko) Version/5.0 Safari/533.1}.
      */
     public T setUserAgent(String userAgent) {
         mHeaders.set(Headers.HEAD_KEY_USER_AGENT, userAgent);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -598,14 +597,13 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setParamsEncoding(String encoding) {
         this.mParamEncoding = encoding;
-        return (T)this;
+        return (T) this;
     }
 
     /**
      * Get the params encoding.
      *
      * @return such as {@code utf-8}, default is {@code utf-8}.
-     *
      * @see #setParamsEncoding(String)
      */
     public String getParamsEncoding() {
@@ -625,7 +623,7 @@ public class BasicRequest<T extends BasicRequest>
     public T setMultipartFormEnable(boolean enable) {
         validateMethodForBody("Form body");
         isMultipartFormEnable = enable;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -662,7 +660,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T add(String key, int value) {
         add(key, Integer.toString(value));
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -670,7 +668,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T add(String key, long value) {
         add(key, Long.toString(value));
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -678,7 +676,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T add(String key, boolean value) {
         add(key, Boolean.toString(value));
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -686,7 +684,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T add(String key, char value) {
         add(key, String.valueOf(value));
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -694,7 +692,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T add(String key, double value) {
         add(key, Double.toString(value));
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -702,7 +700,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T add(String key, float value) {
         add(key, Float.toString(value));
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -710,7 +708,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T add(String key, short value) {
         add(key, Integer.toString(value));
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -718,7 +716,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T add(String key, String value) {
         if (!TextUtils.isEmpty(key)) mParams.add(key, TextUtils.isEmpty(value) ? "" : value);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -726,7 +724,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T set(String key, String value) {
         if (!TextUtils.isEmpty(key)) mParams.set(key, TextUtils.isEmpty(value) ? "" : value);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -736,7 +734,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     private void validateMethodForBody(String methodObject) {
         if (!getRequestMethod().allowRequestBody()) throw new IllegalArgumentException(
-          methodObject + " only supports these handle methods: POST/PUT/PATCH/DELETE.");
+                methodObject + " only supports these handle methods: POST/PUT/PATCH/DELETE.");
     }
 
     /**
@@ -745,7 +743,7 @@ public class BasicRequest<T extends BasicRequest>
     public T add(String key, File file) {
         validateMethodForBody("The File param");
         add(key, new FileBinary(file));
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -754,7 +752,7 @@ public class BasicRequest<T extends BasicRequest>
     public T add(String key, Binary binary) {
         validateMethodForBody("The Binary param");
         mParams.add(key, binary);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -763,7 +761,7 @@ public class BasicRequest<T extends BasicRequest>
     public T set(String key, Binary binary) {
         validateMethodForBody("The Binary param");
         mParams.set(key, binary);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -774,7 +772,7 @@ public class BasicRequest<T extends BasicRequest>
         for (Binary binary : binaries) {
             mParams.add(key, binary);
         }
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -786,7 +784,7 @@ public class BasicRequest<T extends BasicRequest>
         for (Binary binary : binaries) {
             mParams.add(key, binary);
         }
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -800,17 +798,17 @@ public class BasicRequest<T extends BasicRequest>
             if (value == null) value = "";
 
             if (value instanceof File) {
-                mParams.add(key, new FileBinary((File)value));
+                mParams.add(key, new FileBinary((File) value));
             } else if (value instanceof Binary) {
                 mParams.add(key, value);
             } else if (value instanceof List) {
-                List values = (List)value;
+                List values = (List) value;
                 for (int i = 0; i < values.size(); i++) {
                     Object o = values.get(i);
                     if (o == null) o = "";
 
                     if (o instanceof File) {
-                        mParams.add(key, new FileBinary((File)o));
+                        mParams.add(key, new FileBinary((File) o));
                     } else if (o instanceof Binary) {
                         mParams.add(key, value);
                     } else {
@@ -821,7 +819,7 @@ public class BasicRequest<T extends BasicRequest>
                 mParams.add(key, value.toString());
             }
         }
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -835,18 +833,18 @@ public class BasicRequest<T extends BasicRequest>
             if (value == null) value = "";
 
             if (value instanceof File) {
-                mParams.set(key, new FileBinary((File)value));
+                mParams.set(key, new FileBinary((File) value));
             } else if (value instanceof Binary) {
                 mParams.set(key, value);
             } else if (value instanceof List) {
                 mParams.remove(key);
-                List values = (List)value;
+                List values = (List) value;
                 for (int i = 0; i < values.size(); i++) {
                     Object o = values.get(i);
                     if (o == null) o = "";
 
                     if (o instanceof File) {
-                        mParams.add(key, new FileBinary((File)o));
+                        mParams.add(key, new FileBinary((File) o));
                     } else if (o instanceof Binary) {
                         mParams.add(key, value);
                     } else {
@@ -857,7 +855,7 @@ public class BasicRequest<T extends BasicRequest>
                 mParams.set(key, value.toString());
             }
         }
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -865,7 +863,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T remove(String key) {
         mParams.remove(key);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -873,7 +871,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T removeAll() {
         mParams.clear();
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -888,7 +886,7 @@ public class BasicRequest<T extends BasicRequest>
     /**
      * Validate param null.
      *
-     * @param body handle body.
+     * @param body        handle body.
      * @param contentType content type.
      */
     private void validateParamForBody(Object body, String contentType) {
@@ -911,7 +909,6 @@ public class BasicRequest<T extends BasicRequest>
      *
      * @param requestBody any data stream, you don't need to close it.
      * @param contentType such as: {@code application/json;json}, {@code image/*}.
-     *
      * @see #setDefineRequestBody(String, String)
      * @see #setDefineRequestBodyForJson(JSONObject)
      * @see #setDefineRequestBodyForJson(String)
@@ -924,8 +921,8 @@ public class BasicRequest<T extends BasicRequest>
             this.mRequestBody = requestBody;
             mHeaders.set(Headers.HEAD_KEY_CONTENT_TYPE, contentType);
         } else throw new IllegalArgumentException(
-          "Can only accept ByteArrayInputStream and FileInputStream " + "type of stream");
-        return (T)this;
+                "Can only accept ByteArrayInputStream and FileInputStream " + "type of stream");
+        return (T) this;
     }
 
     /**
@@ -933,7 +930,6 @@ public class BasicRequest<T extends BasicRequest>
      *
      * @param requestBody string body.
      * @param contentType such as: {@code application/json;json}, {@code image/*}.
-     *
      * @see #setDefineRequestBody(InputStream, String)
      * @see #setDefineRequestBodyForJson(JSONObject)
      * @see #setDefineRequestBodyForJson(String)
@@ -943,20 +939,21 @@ public class BasicRequest<T extends BasicRequest>
         validateMethodForBody("Request body");
         validateParamForBody(requestBody, contentType);
         try {
+            Logger.i("Body参数: " + requestBody);
+
             mRequestBody = IOUtils.toInputStream(requestBody, getParamsEncoding());
             mHeaders.set(Headers.HEAD_KEY_CONTENT_TYPE, contentType + "; charset=" + getParamsEncoding());
         } catch (UnsupportedEncodingException e) {
             mRequestBody = IOUtils.toInputStream(requestBody);
             mHeaders.set(Headers.HEAD_KEY_CONTENT_TYPE, contentType);
         }
-        return (T)this;
+        return (T) this;
     }
 
     /**
      * Set the handle json body.
      *
      * @param jsonBody json body.
-     *
      * @see #setDefineRequestBody(InputStream, String)
      * @see #setDefineRequestBody(String, String)
      * @see #setDefineRequestBodyForJson(JSONObject)
@@ -964,14 +961,13 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setDefineRequestBodyForJson(String jsonBody) {
         setDefineRequestBody(jsonBody, Headers.HEAD_VALUE_CONTENT_TYPE_JSON);
-        return (T)this;
+        return (T) this;
     }
 
     /**
      * Set the handle json body.
      *
      * @param jsonBody json body.
-     *
      * @see #setDefineRequestBody(InputStream, String)
      * @see #setDefineRequestBody(String, String)
      * @see #setDefineRequestBodyForJson(String)
@@ -979,14 +975,13 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setDefineRequestBodyForJson(JSONObject jsonBody) {
         setDefineRequestBody(jsonBody.toString(), Headers.HEAD_VALUE_CONTENT_TYPE_JSON);
-        return (T)this;
+        return (T) this;
     }
 
     /**
      * Set the handle XML body.
      *
      * @param xmlBody xml body.
-     *
      * @see #setDefineRequestBody(InputStream, String)
      * @see #setDefineRequestBody(String, String)
      * @see #setDefineRequestBody(String, String)
@@ -994,7 +989,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setDefineRequestBodyForXML(String xmlBody) {
         setDefineRequestBody(xmlBody, Headers.HEAD_VALUE_CONTENT_TYPE_XML);
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -1032,7 +1027,7 @@ public class BasicRequest<T extends BasicRequest>
     private void writeRequestBody(OutputStream writer) throws IOException {
         if (mRequestBody != null) {
             if (writer instanceof CounterOutputStream) {
-                ((CounterOutputStream)writer).writeLength(mRequestBody.available());
+                ((CounterOutputStream) writer).writeLength(mRequestBody.available());
             } else {
                 IOUtils.write(mRequestBody, writer);
                 IOUtils.closeQuietly(mRequestBody);
@@ -1054,10 +1049,10 @@ public class BasicRequest<T extends BasicRequest>
             for (Object value : values) {
                 if (value instanceof String) {
                     if (!(writer instanceof CounterOutputStream)) Logger.i(key + "=" + value);
-                    writeFormString(writer, key, (String)value);
+                    writeFormString(writer, key, (String) value);
                 } else if (value instanceof Binary) {
                     if (!(writer instanceof CounterOutputStream)) Logger.i(key + " is Binary");
-                    writeFormBinary(writer, key, (Binary)value);
+                    writeFormBinary(writer, key, (Binary) value);
                 }
                 writer.write("\r\n".getBytes());
             }
@@ -1068,13 +1063,13 @@ public class BasicRequest<T extends BasicRequest>
     /**
      * Send text data in a form.
      *
-     * @param key equivalent to form the name of the input label, {@code "Content-Disposition: form-data;
-     *   name=key"}.
+     * @param key   equivalent to form the name of the input label, {@code "Content-Disposition: form-data;
+     *              name=key"}.
      * @param value equivalent to form the value of the input label.
      */
     private void writeFormString(OutputStream writer, String key, String value) throws IOException {
         String stringFieldBuilder =
-          startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"" + key + "\"\r\n\r\n";
+                startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"" + key + "\"\r\n\r\n";
 
         writer.write(stringFieldBuilder.getBytes(getParamsEncoding()));
         writer.write(value.getBytes(getParamsEncoding()));
@@ -1085,12 +1080,12 @@ public class BasicRequest<T extends BasicRequest>
      */
     private void writeFormBinary(OutputStream writer, String key, Binary value) throws IOException {
         String binaryFieldBuilder =
-          startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"" + key + "\"; filename=\"" +
-          value.getFileName() + "\"\r\n" + "Content-Type: " + value.getMimeType() + "\r\n\r\n";
+                startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"" + key + "\"; filename=\"" +
+                        value.getFileName() + "\"\r\n" + "Content-Type: " + value.getMimeType() + "\r\n\r\n";
         writer.write(binaryFieldBuilder.getBytes());
 
         if (writer instanceof CounterOutputStream) {
-            ((CounterOutputStream)writer).writeLength(value.getLength());
+            ((CounterOutputStream) writer).writeLength(value.getLength());
         } else {
             value.onWriteBinary(writer);
         }
@@ -1113,7 +1108,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setTag(Object tag) {
         this.mTag = tag;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -1130,7 +1125,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setPriority(Priority priority) {
         this.mPriority = priority;
-        return (T)this;
+        return (T) this;
     }
 
     /**
@@ -1204,7 +1199,7 @@ public class BasicRequest<T extends BasicRequest>
      */
     public T setCancelSign(Object sign) {
         this.mCancelSign = sign;
-        return (T)this;
+        return (T) this;
     }
 
     public Object getCancelSign() {
@@ -1231,9 +1226,8 @@ public class BasicRequest<T extends BasicRequest>
     /**
      * Split joint non form data.
      *
-     * @param paramMap param map.
+     * @param paramMap      param map.
      * @param encodeCharset charset.
-     *
      * @return string parameter combination, each key value on nails with {@code "&"} space.
      */
     public static StringBuilder buildCommonParams(MultiValueMap<String, Object> paramMap,
@@ -1269,11 +1263,11 @@ public class BasicRequest<T extends BasicRequest>
         for (int t = 1; t < 12; t++) {
             long time = System.currentTimeMillis() + t;
             if (time % 3L == 0L) {
-                sb.append((char)(int)time % '\t');
+                sb.append((char) (int) time % '\t');
             } else if (time % 3L == 1L) {
-                sb.append((char)(int)(65L + time % 26L));
+                sb.append((char) (int) (65L + time % 26L));
             } else {
-                sb.append((char)(int)(97L + time % 26L));
+                sb.append((char) (int) (97L + time % 26L));
             }
         }
         return sb.toString();
