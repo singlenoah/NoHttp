@@ -1,1 +1,1 @@
-include ':nohttp', ':okhttp', ':sample'
+include ':nohttp', ':sample'

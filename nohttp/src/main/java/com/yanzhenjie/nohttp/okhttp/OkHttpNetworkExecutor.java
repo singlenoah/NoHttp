@@ -13,7 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yanzhenjie.nohttp;
+package com.yanzhenjie.nohttp.okhttp;
+
+import com.yanzhenjie.nohttp.BasicRequest;
+import com.yanzhenjie.nohttp.Headers;
+import com.yanzhenjie.nohttp.Logger;
+import com.yanzhenjie.nohttp.Network;
+import com.yanzhenjie.nohttp.NetworkExecutor;
 
 import java.net.HttpURLConnection;
 import java.net.URL;

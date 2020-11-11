@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yanzhenjie.nohttp;
+package com.yanzhenjie.nohttp.okhttp;
 
 import java.net.HttpURLConnection;
 import java.net.Proxy;
